@@ -1,0 +1,64 @@
+@import '../base/variables';
+
+/*Reseteo*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62, 5%;
+    /*1rem=10px*/
+}
+
+main {
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+}
+
+h1, h2, h3 {
+    font-family: $font-especial;
+}
+
+h1 {
+    font-size: 3rem;
+}
+  
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1 span {
+    background-color: $bg-titulos;
+}
+
+.btn-whpp {
+    .fa-whatsapp {
+        position: fixed;
+        bottom: 5rem;
+        left: 1rem;
+        font-size: 2rem;
+        color: white;
+        background: $color-texto-menu;
+        padding: 0.5rem;
+        border-radius: 50%;
+        text-decoration:none;
+        z-index: 1000;
+        
+        &:hover {
+            color: $color-texto-menu;
+            background: black;
+        }
+    }
+}

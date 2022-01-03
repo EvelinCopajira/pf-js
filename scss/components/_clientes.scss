@@ -1,0 +1,41 @@
+@import '../base/variables';
+
+/*Inicio clientes*/
+.main-clientes {
+    margin-top: 6rem;
+    .descripcion-clientes {
+        text-align: left;
+        margin-top: 2rem;
+        font-size: 1rem;
+        
+        /*Media queries descripción clientes*/
+        @media screen and (min-width:1024px){
+            margin-bottom: 2rem;
+        }
+    }
+    .logo-clientes-container {
+        display: grid;
+        grid-template-rows: repeat(2, 150px);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+
+        /*Media queries grid clientes*/
+        @media screen and (min-width:1200px) {
+            margin-top: 5rem;
+            gap: 5rem;
+
+        }
+
+        .logo-clientes-imagen {
+            align-self: center;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .pie-logos-clientes {
+        text-align: right;
+    }
+}
+
+/*Fin clientes*/

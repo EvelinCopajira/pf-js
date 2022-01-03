@@ -1,0 +1,81 @@
+@import '../base/variables';
+
+/*Inicio nosotras*/
+/*Inicio descripción TICSI*/
+.main-nosotras {
+    margin-top: 6rem;
+    .descripcion-ticsi-container {
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        display: flex;
+        font-size: 1rem;
+
+        .video-ticsi {
+            width: -webkit-fill-available;
+
+            /*Media queries video*/
+            @media screen and (max-width:1240px) {
+                display: none;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .descripcion-ticsi {
+            margin-left: 2rem;
+
+            /*Media queries descripción ticsi -video*/
+            @media screen and (max-width:1240px) {
+                margin-left: 0;
+            }
+            p span {
+                font-weight: bold;
+            }
+            .btn-rediccionador-ig {
+                color: black;
+                font-size: 1.5rem;
+                font-weight: bold;
+                position: relative;
+                top: 0.8rem;
+                text-decoration: none;
+                
+                &:hover {
+                    background-color: #f6e7d8;
+                    border-radius: 0.5rem;
+                    padding: 0.3rem;
+                    color: black;
+                }
+            }
+        }
+    }    
+}
+/*Fin descripción TICSI*/
+
+/*Inicio descripción nosotras*/
+.descripcion-miembros-container {
+    h2 {
+        margin-top: 2rem;
+    }
+    .descripcion-miembros {
+        display: flex;   
+        .fotos-miembros-container {
+            width: 10rem;
+            margin-right: 1rem;
+            img {
+                width: inherit;
+
+                /*Media queries fotos miembros*/
+                @media screen and (max-width:650px){
+                    display: none;
+                }
+            }
+        }
+        p {
+            align-self: center;
+        }
+    }
+}
+
+/*Fin nosotras*/

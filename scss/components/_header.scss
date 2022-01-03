@@ -1,0 +1,54 @@
+@import '../base/variables';
+
+/*Inicio header*/
+header {
+    .navbar {
+        padding:0;
+        .container-fluid {
+            .navbar-brand-ticsi {
+                img {
+                    width: 4rem;
+                    margin-left: 3rem;
+                    
+                    /*Media queries logo-menú collapsado*/
+                    @media screen and (max-width:768px) {
+                        margin-left: 0rem; 
+                    }
+                }
+            }
+            .btn-ticsi-h {
+                background-color: $color-texto-menu;
+                font-size: 1rem;
+            }
+        }
+    }    
+}
+
+
+/*Inicio navbar Ticsi*/
+#navbarNavAltMarkup {
+    font-family: $font-menu;
+    font-size: 1.3rem;
+    justify-content: center;
+
+    /*Media queries para menu-tablet*/
+    @media screen and (max-width: 767px) {
+        font-size: 1rem; 
+    }
+    
+    .navbar-nav {
+        .nav-item {
+            .nav-link{
+                color: $color-texto-menu;
+                margin: 0.5rem;
+                &:hover {
+                    background-color: $color-texto-menu;
+                    color: white;
+                    border-radius: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+/*Fin header*/
