@@ -27,7 +27,9 @@ main {
   margin-bottom: 5rem;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "Yeseva One", cursive;
 }
 
@@ -235,7 +237,8 @@ footer .footer-container-general p {
 .productos-container h2 {
   margin-top: 2rem;
 }
-.productos-container .cuidado-facial-container, .productos-container .velas-otros-container {
+.productos-container .cuidado-facial-container,
+.productos-container .velas-otros-container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -243,21 +246,63 @@ footer .footer-container-general p {
   align-items: center;
   margin-top: 2rem;
 }
-.productos-container .cuidado-facial-container .ecopads-container, .productos-container .cuidado-facial-container .toallas-faciales-container, .productos-container .cuidado-facial-container .vinchas-container, .productos-container .cuidado-facial-container .sets-container, .productos-container .cuidado-facial-container .velas200cc-container, .productos-container .cuidado-facial-container .velas500cc-container, .productos-container .cuidado-facial-container .floreros-container, .productos-container .velas-otros-container .ecopads-container, .productos-container .velas-otros-container .toallas-faciales-container, .productos-container .velas-otros-container .vinchas-container, .productos-container .velas-otros-container .sets-container, .productos-container .velas-otros-container .velas200cc-container, .productos-container .velas-otros-container .velas500cc-container, .productos-container .velas-otros-container .floreros-container {
+.productos-container .cuidado-facial-container .prod-container,
+.productos-container .velas-otros-container .prod-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.productos-container .cuidado-facial-container .ecopads-container div img, .productos-container .cuidado-facial-container .toallas-faciales-container div img, .productos-container .cuidado-facial-container .vinchas-container div img, .productos-container .cuidado-facial-container .sets-container div img, .productos-container .cuidado-facial-container .velas200cc-container div img, .productos-container .cuidado-facial-container .velas500cc-container div img, .productos-container .cuidado-facial-container .floreros-container div img, .productos-container .velas-otros-container .ecopads-container div img, .productos-container .velas-otros-container .toallas-faciales-container div img, .productos-container .velas-otros-container .vinchas-container div img, .productos-container .velas-otros-container .sets-container div img, .productos-container .velas-otros-container .velas200cc-container div img, .productos-container .velas-otros-container .velas500cc-container div img, .productos-container .velas-otros-container .floreros-container div img {
+.productos-container .cuidado-facial-container .prod-container h3,
+.productos-container .velas-otros-container .prod-container h3 {
+  font-size: 1.3rem;
+  padding: 0;
+}
+.productos-container .cuidado-facial-container .prod-container div .img-producto,
+.productos-container .velas-otros-container .prod-container div .img-producto {
   width: 15rem;
   height: 15rem;
   border-radius: 0.8rem;
 }
-.productos-container .cuidado-facial-container .ecopads-container div p, .productos-container .cuidado-facial-container .toallas-faciales-container div p, .productos-container .cuidado-facial-container .vinchas-container div p, .productos-container .cuidado-facial-container .sets-container div p, .productos-container .cuidado-facial-container .velas200cc-container div p, .productos-container .cuidado-facial-container .velas500cc-container div p, .productos-container .cuidado-facial-container .floreros-container div p, .productos-container .velas-otros-container .ecopads-container div p, .productos-container .velas-otros-container .toallas-faciales-container div p, .productos-container .velas-otros-container .vinchas-container div p, .productos-container .velas-otros-container .sets-container div p, .productos-container .velas-otros-container .velas200cc-container div p, .productos-container .velas-otros-container .velas500cc-container div p, .productos-container .velas-otros-container .floreros-container div p {
+.productos-container .cuidado-facial-container .prod-container p,
+.productos-container .velas-otros-container .prod-container p {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+.productos-container .cuidado-facial-container .velas200cc-container,
+.productos-container .cuidado-facial-container .velas500cc-container,
+.productos-container .cuidado-facial-container .floreros-container,
+.productos-container .velas-otros-container .velas200cc-container,
+.productos-container .velas-otros-container .velas500cc-container,
+.productos-container .velas-otros-container .floreros-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.productos-container .cuidado-facial-container .velas200cc-container div img,
+.productos-container .cuidado-facial-container .velas500cc-container div img,
+.productos-container .cuidado-facial-container .floreros-container div img,
+.productos-container .velas-otros-container .velas200cc-container div img,
+.productos-container .velas-otros-container .velas500cc-container div img,
+.productos-container .velas-otros-container .floreros-container div img {
+  width: 100%;
+  border-radius: 0.8rem;
+}
+.productos-container .cuidado-facial-container .velas200cc-container div p,
+.productos-container .cuidado-facial-container .velas500cc-container div p,
+.productos-container .cuidado-facial-container .floreros-container div p,
+.productos-container .velas-otros-container .velas200cc-container div p,
+.productos-container .velas-otros-container .velas500cc-container div p,
+.productos-container .velas-otros-container .floreros-container div p {
   font-size: 0.8rem;
   margin-top: 1rem;
 }
-.productos-container .cuidado-facial-container .ecopads-container:hover, .productos-container .cuidado-facial-container .toallas-faciales-container:hover, .productos-container .cuidado-facial-container .vinchas-container:hover, .productos-container .cuidado-facial-container .sets-container:hover, .productos-container .cuidado-facial-container .velas200cc-container:hover, .productos-container .cuidado-facial-container .velas500cc-container:hover, .productos-container .cuidado-facial-container .floreros-container:hover, .productos-container .velas-otros-container .ecopads-container:hover, .productos-container .velas-otros-container .toallas-faciales-container:hover, .productos-container .velas-otros-container .vinchas-container:hover, .productos-container .velas-otros-container .sets-container:hover, .productos-container .velas-otros-container .velas200cc-container:hover, .productos-container .velas-otros-container .velas500cc-container:hover, .productos-container .velas-otros-container .floreros-container:hover {
+.productos-container .cuidado-facial-container .velas200cc-container:hover,
+.productos-container .cuidado-facial-container .velas500cc-container:hover,
+.productos-container .cuidado-facial-container .floreros-container:hover,
+.productos-container .velas-otros-container .velas200cc-container:hover,
+.productos-container .velas-otros-container .velas500cc-container:hover,
+.productos-container .velas-otros-container .floreros-container:hover {
   transform: scale(1.1);
   background-color: #ffe88c;
   padding: 0.8rem;

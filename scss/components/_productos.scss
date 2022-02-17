@@ -7,30 +7,64 @@
     h2 {
         margin-top: 2rem;
     }
-    .cuidado-facial-container, .velas-otros-container {
+
+    .cuidado-facial-container,
+    .velas-otros-container {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
         margin-top: 2rem;
-        .ecopads-container, .toallas-faciales-container, .vinchas-container, .sets-container, .velas200cc-container, .velas500cc-container, .floreros-container {
+        
+        .prod-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            h3 {
+                font-size: 1.3rem;
+                padding: 0;
+            }
+
             div {
-                img {
+                .img-producto {
                     width: 15rem;
                     height: 15rem;
                     border-radius: 0.8rem;
                 }
-            }            
+            }
+
+            p{
+                padding: 0;
+                margin: 0;
+                font-size: 1rem;
+            }
+
+        }
+
+
+        .velas200cc-container,
+        .velas500cc-container,
+        .floreros-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div {
+                img {
+                    width: 100%;
+                    border-radius: 0.8rem;
+                }
+            }
+
             div {
                 p {
                     font-size: 0.8rem;
                     margin-top: 1rem;
                 }
-            }   
+            }
+
             &:hover {
                 transform: scale(1.1);
                 background-color: lighten($color: $color-texto-menu, $amount: 10%);

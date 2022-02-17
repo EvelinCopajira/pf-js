@@ -21,14 +21,16 @@ main {
     margin-bottom: 5rem;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: $font-especial;
 }
 
 h1 {
     font-size: 3rem;
 }
-  
+
 h2 {
     font-size: 2rem;
 }
@@ -53,9 +55,9 @@ h1 span {
         background: $color-texto-menu;
         padding: 0.5rem;
         border-radius: 50%;
-        text-decoration:none;
+        text-decoration: none;
         z-index: 1000;
-        
+
         &:hover {
             color: $color-texto-menu;
             background: black;
