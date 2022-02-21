@@ -16,7 +16,7 @@
         justify-content: space-around;
         align-items: center;
         margin-top: 2rem;
-        
+
         .prod-container {
             display: flex;
             flex-direction: column;
@@ -35,12 +35,20 @@
                 }
             }
 
-            p{
+            p {
                 padding: 0;
                 margin: 0;
                 font-size: 1rem;
             }
 
+            div {
+                .btn-agregar {
+                    background-color: $color-texto-menu;
+                    padding: 0.5rem 1rem;
+                    border-radius: 10rem;
+                    border: none;
+                }
+            }
         }
 
 

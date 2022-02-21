@@ -269,6 +269,13 @@ footer .footer-container-general p {
   margin: 0;
   font-size: 1rem;
 }
+.productos-container .cuidado-facial-container .prod-container div .btn-agregar,
+.productos-container .velas-otros-container .prod-container div .btn-agregar {
+  background-color: #ffde59;
+  padding: 0.5rem 1rem;
+  border-radius: 10rem;
+  border: none;
+}
 .productos-container .cuidado-facial-container .velas200cc-container,
 .productos-container .cuidado-facial-container .velas500cc-container,
 .productos-container .cuidado-facial-container .floreros-container,

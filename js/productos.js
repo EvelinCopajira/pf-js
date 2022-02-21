@@ -1,6 +1,9 @@
 //accedo a los elementos por className
 const cuidadoFacialContainer = document.querySelector(".cuidado-facial-container");
 
+//accedo al btn a traves del type
+const btnAgregar = document.querySelector("[type=button]");
+
 
 //array con datos de objetos disponibles (variables) - 
 const productosCuidadosFaciales = [{
@@ -39,7 +42,8 @@ function mostrarProductos() {
         //agrego class al elemento y le asocio el style
         divProducto.classList.add("prod-container");
 
-        const divImagen = document.createElement('div');    
+        const divImagen = document.createElement('div');
+
         const imgProducto = document.createElement('img');
         imgProducto.src = productoCuidadoFacial.img;
         imgProducto.classList.add("img-producto");
@@ -48,34 +52,35 @@ function mostrarProductos() {
         nombreProducto.textContent = productoCuidadoFacial.nombre;
 
         const skuProducto = document.createElement('p');
-        skuProducto.textContent= `Sku: ${productoCuidadoFacial.sku}`;
+        skuProducto.textContent = `Sku: ${productoCuidadoFacial.sku}`;
 
-        const precioProducto = document.createElement ('p');
-        precioProducto.textContent= `$${productoCuidadoFacial.precio} + IVA (21%)`;
-        
+        const precioProducto = document.createElement('p');
+        precioProducto.textContent = `$${productoCuidadoFacial.precio}`;
+
+        const cantidadesAgregadas = document.createElement ('div');
+
         const selectCantidades = document.createElement('select');
+        let cantidades = [1, 2, 3, 4, 5];
+
+        for (const iterator of cantidades) {
+            let options = `<option value="${iterator}">${iterator}</option>`;
+            selectCantidades.innerHTML += options;
+        }
+
+        const btnAgregar = document.createElement('button');
+        btnAgregar.textContent = "AGREGAR";
+        btnAgregar.classList.add('btn-agregar');
+
 
         divImagen.appendChild(imgProducto);
         divProducto.appendChild(divImagen);
         divProducto.appendChild(nombreProducto);
         divProducto.appendChild(skuProducto);
         divProducto.appendChild(precioProducto);
-        divProducto.appendChild(selectCantidades);
+        cantidadesAgregadas.appendChild(selectCantidades);
+        cantidadesAgregadas.appendChild(btnAgregar);
+        divProducto.appendChild(cantidadesAgregadas);
+
         cuidadoFacialContainer.appendChild(divProducto);
     })
 };
-
-//array cantidad
-const selectCantidades = [1,2,3,4,5];
-
-//itero el array listadoProductos para generar las opciones del select
-
-
-//función para ser llamada con el evento listener
-function seleccion() {
-    //agrego el producto seleccionado al carritoCompras
-    carritoCompras.push(producto);
-};
-
-//evento listener para mostrar en pantalla la selección del usuario
-btnAgregar.addEventListener("click", seleccion);
