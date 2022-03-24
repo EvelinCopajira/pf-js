@@ -10,39 +10,17 @@ const cuidadoFacialContainer = document.querySelector(".cuidado-facial-container
 let carritoCompras = [];
 
 //array con datos de objetos disponibles (variables) 
-let productosCuidadosFaciales = [{
-        nombre: "ecopads",
-        precio: 50,
-        sku: "TIC-0001",
-        img: '../multimedia/fotos/webp/fotos-secciones/pads2.webp',
-        cantidad: 1
-    },
-    {
-        nombre: "toallas faciales",
-        precio: 200,
-        sku: "TIC-0002",
-        img: '../multimedia/fotos/webp/fotos-secciones/toalla1.webp',
-        cantidad: 1
+let productosCuidadosFaciales = null;
+fetch("../lista-productos.json")
+    .then((resp) => resp.json())
+    .then((data) => {
+        console.log(data);
 
-    },
-    {
-        nombre: "vinchas",
-        precio: 300,
-        sku: "TIC-0003",
-        img: '../multimedia/fotos/webp/fotos-secciones/vinchas2-cuadrado.webp',
-        cantidad: 1
+        productosCuidadosFaciales = data;
+        mostrarProductos();
+        recuperarStorage();
+    })
 
-    },
-    {
-        nombre: "kits",
-        precio: 100,
-        sku: "TIC-0004",
-        img: '../multimedia/fotos/webp/fotos-secciones/set2.webp',
-        cantidad: 1
-    }
-];
-
-mostrarProductos();
 
 //funcion para mostrar todos los productos
 function mostrarProductos() {
@@ -191,10 +169,6 @@ function recuperarStorage() {
     }
 };
 
-//ejecuto la funcion por fuera para que me traiga los resultados
-recuperarStorage();
-
-
 
 //formulario
 const nombre = document.querySelector(".name"),
@@ -204,7 +178,9 @@ const nombre = document.querySelector(".name"),
 
 
 btnFinalizarCompra.addEventListener('click', () => {
+    //verifico que el carrito no esta vacio y puedo finalizar la compra
         if (carritoCompras.length === 0) {
+            //si esta vacio muestra msj de error con toastify
             Toastify({
                 text: "Tu carrito está vacío",
                 duration: 3000,
@@ -220,20 +196,24 @@ btnFinalizarCompra.addEventListener('click', () => {
             }).showToast();
             return;
         }
-        mensaje.innerText="";
-        const validacion = validarDatos();
-        console.log(validacion);
-        if (validacion === undefined) {
+        //elimina el msj de error
+        mensaje.innerText = "";
 
+        //la funcion devuelve objeto con los campos invalidos
+        const validacion = validarDatos();
+
+        //la funcion devuelve undefined si los campos son validos
+        if (validacion === undefined) {
             succesAlert();
             return
         }
+
+        //en caso de tener campos invalidos tomo los keys del objeto (que son los campos invalidos)
         failAlert(Object.keys(validacion));
-
     }
-
 );
 
+//funcion para mostrar un msj de confirmacion de compra
 function succesAlert() {
     Swal.fire({
         position: 'center',
@@ -241,20 +221,23 @@ function succesAlert() {
         title: 'Tu compra fue confirmada',
         showConfirmButton: true
     }).then((result) => {
+        //al cerrar el msj de confirmacion se elimina el local storage y se redirije al index
         localStorage.clear();
         window.location.href = "../index.html"
-
     })
-}
+};
 
+//funcion para mostrar un msj de error con los campos invalidos
 function failAlert(camposErroneos) {
+    //camposErroneos es una lista con los campos invalidos
     mensaje.innerText = "Revise los datos ingresados"
-    camposErroneos.forEach ( (campo)=>{
+    camposErroneos.forEach((campo) => {
         mensaje.innerText += "\n'" + campo + "' es invalido";
     })
 
-}
+};
 
+//funcion que toma los inputs y los valida - libreria: https://validatejs.org
 function validarDatos() {
     const constraints = {
         "Nombre y Apellido": {
@@ -262,14 +245,13 @@ function validarDatos() {
                 allowEmpty: false
             }
         },
-       "E-mail": {
+        "E-mail": {
             email: true
         }
-
-    }
+    };
 
     return validate({
         "Nombre y Apellido": nombre.value,
         "E-mail": mail.value
     }, constraints);
-}
+};

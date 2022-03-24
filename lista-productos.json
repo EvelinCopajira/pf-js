@@ -1,0 +1,31 @@
+[{
+        "nombre": "ecopads",
+        "precio": 50,
+        "sku": "TIC-0001",
+        "img": "../multimedia/fotos/webp/fotos-secciones/pads2.webp",
+        "cantidad": 1
+    },
+    {
+        "nombre": "toallas faciales",
+        "precio": 200,
+        "sku": "TIC-0002",
+        "img": "../multimedia/fotos/webp/fotos-secciones/toalla1.webp",
+        "cantidad": 1
+
+    },
+    {
+        "nombre": "vinchas",
+        "precio": 300,
+        "sku": "TIC-0003",
+        "img": "../multimedia/fotos/webp/fotos-secciones/vinchas2-cuadrado.webp",
+        "cantidad": 1
+
+    },
+    {
+        "nombre": "kits",
+        "precio": 100,
+        "sku": "TIC-0004",
+        "img": "../multimedia/fotos/webp/fotos-secciones/set2.webp",
+        "cantidad": 1
+    }
+]
