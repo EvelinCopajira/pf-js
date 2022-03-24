@@ -49,6 +49,26 @@ header {
             }
         }
     }
+
+    .btn-carrito{
+        background-color: $color-texto-menu;
+        padding: 0.5rem 1rem;
+        border-radius: 10rem;
+        border: none;
+        
+        .fas {
+            font-size: 1.5rem;
+            color: black;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+                
+            /*Media queries redes-tablet*/
+            @media screen and (max-width:768px) {
+                font-size: 1rem;
+            }                
+        }
+    }
+
 }
 
 /*Fin header*/

@@ -48,6 +48,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+  <!-- TOASTIFY -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
   <!-- FONT AWESOME (iconos de redes) -->
   <script src="https://kit.fontawesome.com/a01c8e082d.js" crossorigin="anonymous"></script>
 
@@ -89,11 +92,47 @@
               <a class="nav-link" href="../paginas/contacto.html">CONTACTO</a>
             </li>
           </ul>
+          <!-- btn carrito + contador -->
+          <button type="button" class="btn-carrito" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+              class="fas fa-shopping-cart"></i><span class="contador-carrito">0</span>
+          </button>
         </div>
       </section>
     </nav>
   </header>
   <!--fin header  -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">CARRITO DE COMPRAS</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body carrito-container">
+          <div class="titulos-carrito">
+            <p>PRODUCTO</p>
+            <p>PRECIO</p>
+            <p>CANTIDAD</p>
+            <p></p>
+          </div>
+        </div>
+        <div id="footer-carrito" class="modal-footer">
+          <p>Precio Total: $<span class="suma-total"></span></p>
+          <form class="formulario-compra" action="">
+            <p>Nombre y Apellido:<input class="name" type="text" name="nombres" id="datos-formulario"
+                placeholder="Ingrese su nombre y apellido"></p>
+            <p>E-mail:<input class="mail" type="email" name="email" id="datos-formulario"
+                placeholder="Ingrese su e-mail"></p>
+            <p class="mensaje-error"></p>
+          </form>
+
+          <button type="button" id="btn-confirmar-compra" class="btn btn-primary">CONFIRMAR COMPRA</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- btn whpp -->
   <div>
@@ -109,12 +148,11 @@
       <!-- inicio de la sección "cuidados faciales" -->
       <h2>CUIDADO FACIAL</h2>
       <section class="cuidado-facial-container">
-
       </section>
       <!-- fin de la sección "cuidados faciales" -->
 
       <!-- inicio de la seccion "velas y otros" -->
-      <h2>VELAS Y OTROS</h2>
+      <!-- <h2>VELAS Y OTROS</h2>
       <section class="velas-otros-container">
         <section class="velas200cc-container">
           <div>
@@ -160,7 +198,7 @@
             <p>KITS CON VARIOS PRODUCTOS DE LA LÍNEA</p>
           </div>
         </section>
-      </section>
+      </section> -->
       <!-- fin de la sección "velas y otros" -->
     </section>
   </main>
@@ -192,6 +230,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
   </script>
+
+  <!-- script toastify -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- script sweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
 
   <!-- script .js -->
   <script src="../js/productos.js"></script>
