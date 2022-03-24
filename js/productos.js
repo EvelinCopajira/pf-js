@@ -9,7 +9,7 @@ const cuidadoFacialContainer = document.querySelector(".cuidado-facial-container
 //array vacío para pushear productos agregados
 let carritoCompras = [];
 
-//array con datos de objetos disponibles (variables) 
+//array con datos de objetos disponibles (variables) - lee de lista-productos.json
 let productosCuidadosFaciales = null;
 fetch("../lista-productos.json")
     .then((resp) => resp.json())
@@ -19,7 +19,7 @@ fetch("../lista-productos.json")
         productosCuidadosFaciales = data;
         mostrarProductos();
         recuperarStorage();
-    })
+    });
 
 
 //funcion para mostrar todos los productos
@@ -49,13 +49,13 @@ function mostrarProductos() {
         //eventListener click btnAgregar
         btnAgregar.addEventListener('click', () => {
             agregarAlCarrito(producto.sku)
+            //uso de libreria toastify
             Toastify({
                 text: "Agregaste un producto al carrito",
                 duration: 3000,
                 gravity: "bottom", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
                 stopOnFocus: true, // Prevents dismissing of toast on hover
-
                 style: {
                     background: "#f6e7d8",
                     color: "black"
@@ -81,6 +81,7 @@ function agregarAlCarrito(sku) {
 
         //ejecuto la funcion actualizarCarrito
         actualizarCarrito();
+
     } else {
         //creo una variable para buscar el producto que tenga el sku estrictamente igual al sku que ejecuta el eventListener
         let productoAgregar = productosCuidadosFaciales.find(producto => producto.sku === sku);
@@ -104,7 +105,6 @@ function agregarAlCarrito(sku) {
         <button class="btn-eliminar ${productoAgregar.sku}"><i class="fas fa-trash-alt"></i></button>
             </div>`
 
-
         //agrego el div al container
         carritoContainer.appendChild(divCarrito);
 
@@ -114,7 +114,7 @@ function agregarAlCarrito(sku) {
         //eventListener
         btnEliminar.addEventListener('click', () => {
 
-            //condicional para que no borre todas las cantidades con el btnEliminar, sino de una
+            //condicional para que no borre todas las cantidades con el btnEliminar, sino de a una
             if (productoAgregar.cantidad === 1) {
                 //busco el padre del elemento para poder eliminar todo, tambien en HTML
                 btnEliminar.parentElement.remove();
@@ -139,10 +139,10 @@ function agregarAlCarrito(sku) {
 
                 //guardo modificaciones en localStorage
                 localStorage.setItem("carrito", JSON.stringify(carritoCompras));
-            }
+            };
 
-        })
-    }
+        });
+    };
     //guardo los cambios en localStorage, se guardan como string
     localStorage.setItem("carrito", JSON.stringify(carritoCompras));
 };
@@ -166,65 +166,70 @@ function recuperarStorage() {
         recuperarLocalStorage.forEach(element => {
             agregarAlCarrito(element.sku)
         });
-    }
+    };
 };
 
 
-//formulario
+//formulario en modal
 const nombre = document.querySelector(".name"),
     mail = document.querySelector(".mail"),
     formulario = document.querySelectorAll(".formulario-compra"),
     mensaje = document.querySelector(".mensaje-error");
 
-
 btnFinalizarCompra.addEventListener('click', () => {
     //verifico que el carrito no esta vacio y puedo finalizar la compra
-        if (carritoCompras.length === 0) {
-            //si esta vacio muestra msj de error con toastify
-            Toastify({
-                text: "Tu carrito está vacío",
-                duration: 3000,
-                gravity: "bottom", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+    if (carritoCompras.length === 0) {
+        //si esta vacio muestra msj de error con toastify
+        Toastify({
+            text: "Tu carrito está vacío",
+            duration: 3000,
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "orange",
+                color: "black"
+            },
+            onClick: function () {} // Callback after click
+        }).showToast();
+        return;
+    };
 
-                style: {
-                    background: "orange",
-                    color: "black"
-                },
-                onClick: function () {} // Callback after click
-            }).showToast();
-            return;
+    //elimina el msj de error cuando los valores ingresados son validos
+    mensaje.innerText = "";
+
+    //la funcion devuelve objeto con los campos invalidos
+    const validacion = validarDatos();
+
+    //la funcion devuelve undefined si los campos son validos
+    if (validacion === undefined) {
+        succesAlert();
+        return
+    };
+
+    //en caso de tener campos invalidos tomo los keys del objeto (que son los campos invalidos)
+    failAlert(Object.keys(validacion));
+});
+
+//funcion que toma los inputs y los valida - libreria: https://validatejs.org
+function validarDatos() {
+    const constraints = {
+        "Nombre y Apellido": {
+            format: {
+                pattern: "[A-ZÁÉÍÓÚa-zñáéíóú]+(?: [A-ZÁÉÍÓÚa-zñáéíóú]+)?$",
+            },
+            presence: {
+                allowEmpty: false
+            },
+        },
+        "E-mail": {
+            email: true
         }
-        //elimina el msj de error
-        mensaje.innerText = "";
-
-        //la funcion devuelve objeto con los campos invalidos
-        const validacion = validarDatos();
-
-        //la funcion devuelve undefined si los campos son validos
-        if (validacion === undefined) {
-            succesAlert();
-            return
-        }
-
-        //en caso de tener campos invalidos tomo los keys del objeto (que son los campos invalidos)
-        failAlert(Object.keys(validacion));
-    }
-);
-
-//funcion para mostrar un msj de confirmacion de compra
-function succesAlert() {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Tu compra fue confirmada',
-        showConfirmButton: true
-    }).then((result) => {
-        //al cerrar el msj de confirmacion se elimina el local storage y se redirije al index
-        localStorage.clear();
-        window.location.href = "../index.html"
-    })
+    };
+    return validate({
+        "Nombre y Apellido": nombre.value,
+        "E-mail": mail.value
+    }, constraints);
 };
 
 //funcion para mostrar un msj de error con los campos invalidos
@@ -233,25 +238,21 @@ function failAlert(camposErroneos) {
     mensaje.innerText = "Revise los datos ingresados"
     camposErroneos.forEach((campo) => {
         mensaje.innerText += "\n'" + campo + "' es invalido";
-    })
-
+    });
 };
 
-//funcion que toma los inputs y los valida - libreria: https://validatejs.org
-function validarDatos() {
-    const constraints = {
-        "Nombre y Apellido": {
-            presence: {
-                allowEmpty: false
-            }
-        },
-        "E-mail": {
-            email: true
-        }
-    };
-
-    return validate({
-        "Nombre y Apellido": nombre.value,
-        "E-mail": mail.value
-    }, constraints);
+//funcion para mostrar un msj de confirmacion de compra
+function succesAlert() {
+    //uso liberia sweet alert
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tu compra fue confirmada',
+        text: 'Muchas gracias!',
+        showConfirmButton: true
+    }).then((result) => {
+        //al cerrar el msj de confirmacion se elimina el local storage y se redirije al index
+        localStorage.clear();
+        window.location.href = "../index.html"
+    })
 };
